@@ -22,14 +22,12 @@ while i < count
   i += 1
 end
 
-@womens_stores = Store.where(womens_apparel: true)
+@womens_stores = Store.where('womens_apparel = ? AND annual_revenue < ?', true, 1000000)
 count = @womens_stores.count
 i = 0
 
 while i < count
-  if @womens_stores[i].annual_revenue < 1000000
-    puts "Name: #{@womens_stores[i].name}"
-    puts "Annual Revenue: #{@womens_stores[i].annual_revenue}"
-  end
+  puts "Name: #{@womens_stores[i].name}"
+  puts "Annual Revenue: #{@womens_stores[i].annual_revenue}"
   i += 1
 end
